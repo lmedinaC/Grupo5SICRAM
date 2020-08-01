@@ -6,14 +6,6 @@
     height: 250px;
 }
 
-.rounded-circle {
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0);
-}
-.rounded-circle:hover {
-   
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    transition: all 0.5s; 
-}
 
 
 /*Estilos de div*/
@@ -28,9 +20,9 @@
 footer {
     margin-top: 60px;
     width: 100%;
-    background-color: #00405ef3; ;
+    background-color: #2d5a71; ;
     padding: 0px 0px;
-    border: 1px solid #025f8ace ;
+    border: 1px solid #2d5a71 ;
 }
 footer p {
     margin: 0px;

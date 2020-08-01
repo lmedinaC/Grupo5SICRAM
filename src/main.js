@@ -19,6 +19,7 @@ Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios)
 Vue.use(Vuelidate)
 Vue.use(vmodal)
+
 window.$ = window.jQuery = require('jquery');
 //axios.defaults.baseURL = 'https://proyectocalidad9.herokuapp.com/';
 new Vue({

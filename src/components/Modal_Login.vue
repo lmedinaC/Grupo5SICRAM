@@ -1,73 +1,93 @@
 <template>
-<modal name="demo-login" transition="pop-out" :width="modalWidth" :focus-trap="true" :height="600">
-  <div class="box ">
-    
+  <modal
+    name="demo-login"
+    transition="pop-out"
+    :width="modalWidth"
+    :focus-trap="true"
+    :height="600"
+  >
+    <div class="box ">
       <div class="text-center mt-5">
         <h3>REGISTRO DEL PACIENTE</h3>
       </div>
       <form
-        @submit.prevent="registrarPaciente({correo: $v.paciente.correo.$model, contrasena:$v.paciente.contrasena.$model},
-        {nombre: $v.pacienteDatos.nombre.$model,
-        apellido: $v.pacienteDatos.apellido.$model,
-        dni: $v.pacienteDatos.dni.$model,
-        edad: $v.pacienteDatos.edad.$model,
-        genero: $v.pacienteDatos.genero.$model,
-        discapacidad:$v.pacienteDatos.discapacidad.$model,
-        telefono: $v.pacienteDatos.telefono.$model,
-        direccion: $v.pacienteDatos.direccion.$model})"
+        @submit.prevent="
+          registrarPaciente({
+            username: $v.user.username.$model,
+            password: $v.user.password.$model,
+            email: $v.user.email.$model,
+            name: $v.user.name.$model,
+            lastname: $v.user.lastname.$model,
+            dni: $v.user.dni.$model,
+            edad: $v.user.edad.$model,
+            discapacidad: $v.user.discapacidad.$model,
+            celular: $v.user.celular.$model,
+            direccion: $v.user.direccion.$model,
+          })
+        "
       >
-      
-       <div class="my-2 ml-5 mr-5" style="padding: 0px 12px 0px 10px; background-color: white;">
-         <hr>
-           <div class="form-row">
+        <div
+          class="my-2 ml-5 mr-5"
+          style="padding: 0px 12px 0px 10px; background-color: white; "
+        >
+          <hr />
+          <div class="form-row">
             <div class="form-group col-md-6 mt-4">
-              <input type="text" class="form-control" placeholder="Usuario" id="inputUsuario" />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Usuario"
+                id="inputUsuario"
+                v-model="$v.user.username.$model"
+              />
             </div>
             <div class="form-group col-md-6 mt-4">
               <input
                 type="email"
                 class="form-control"
                 id="inputEmail4"
-                v-model="$v.paciente.correo.$model"
+                v-model="$v.user.email.$model"
                 placeholder="Correo"
               />
             </div>
           </div>
           <div class="form-row ">
-                <div class="form-group col-md-6 ">
-                <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword4"
-                    v-model="$v.paciente.contrasena.$model"
-                    placeholder="Contraseña"
-                />
-                </div>
-                <div class="form-group col-md-6" >
-                <input 
-                    type="password" 
-                    class="form-control" 
-                    id="inputNewPassword4" 
-                    placeholder="Repita Contraseña"
-                />
-                </div>
+            <div class="form-group col-md-6 ">
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword4"
+                v-model="$v.user.password.$model"
+                placeholder="Contraseña"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <input
+                type="password"
+                class="form-control"
+                id="inputNewPassword4"
+                placeholder="Repita contraseña"
+              />
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <input
+                style="text-transform:uppercase;"
                 type="text"
                 class="form-control"
                 id="inputName"
-                v-model="$v.pacienteDatos.nombre.$model"
+                v-model="$v.user.name.$model"
                 placeholder="Nombres"
               />
             </div>
             <div class="form-group col-md-6">
               <input
+                style="text-transform:uppercase;"
                 type="text"
                 class="form-control"
                 id="inputLastName"
-                v-model="$v.pacienteDatos.apellido.$model"
+                v-model="$v.user.lastname.$model"
                 placeholder="Apellidos"
               />
             </div>
@@ -75,29 +95,31 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <input
+                style="text-transform:uppercase;"
                 type="text"
                 class="form-control"
                 id="inputDni"
-                v-model="$v.pacienteDatos.dni.$model"
+                v-model="$v.user.dni.$model"
                 placeholder="DNI"
               />
             </div>
             <div class="form-group col-md-6">
-              <select id="inputState" class="form-control" 
-              v-model="$v.pacienteDatos.genero.$model">
-                <option selected>-- Sexo --</option>
-                <option value="femenino">Femenino</option>
-                <option value="masculino">Masculino</option>
-              </select>
+              <input
+                type="text"
+                class="form-control"
+                id="inputDireccion"
+                placeholder="DIRECCIÓN 'Calle siempre viva...'"
+                v-model="$v.user.direccion.$model"
+              />
             </div>
-        </div>
-        <div class="form-row">
+          </div>
+          <div class="form-row">
             <div class="form-group col-md-6">
               <input
                 type="number"
                 class="form-control"
                 id="inputEdad"
-                v-model="$v.pacienteDatos.edad.$model"
+                v-model="$v.user.edad.$model"
                 placeholder="Edad"
               />
             </div>
@@ -106,8 +128,8 @@
                 type="text"
                 class="form-control"
                 id="inputDiscapacidad"
-                v-model="$v.pacienteDatos.discapacidad.$model"
-                placeholder="Discapacidad"
+                v-model="$v.user.discapacidad.$model"
+                placeholder="Discapacidad 'niguna' "
               />
             </div>
           </div>
@@ -117,57 +139,62 @@
                 type="number"
                 class="form-control"
                 id="inputCelular"
-                v-model="$v.pacienteDatos.telefono.$model"
-                placeholder="Número de Celular"
+                v-model="$v.user.celular.$model"
+                placeholder="Número de celular"
               />
             </div>
-            <div class="form-group col-md-6">
-              <input
-                type="text"
-                class="form-control"
-                id="inputDireccion"
-                placeholder="Dirección 'Calle siempre viva...'"
-                v-model="$v.pacienteDatos.direccion.$model"
-              />
-            </div>
+            
           </div>
-           <br />
-           <div class="alert alert-danger" role="alert" v-if="carga!=true">
+          <br />
+          <div class="alert alert-danger" role="alert" v-if="carga != true">
             <div class="label">{{mensaje}}</div>
-           </div>
-           <hr>
-          <div class="row justify-content-center">
-          <div class="col-12 col-sm-10 col-xl-6 text-center">
-            <input
-              type="submit"
-              class="butn"
-              value="REGISTRAR"
-              :disabled="$v.$invalid || carga2"
-            />
           </div>
-       </div>
-       
+          <hr />
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-xl-6 text-center">
+              <input
+                type="submit"
+                class="butn"
+                value="REGISTRAR"
+                :disabled="$v.$invalid || carga2"
+              />
+            </div>
+          </div>
         </div>
         <br />
-        
       </form>
     </div>
-
-</modal>
+  </modal>
 </template>
 <script>
+import axios from "axios";
+import qs from "qs";
 import { required, minLength, email } from "vuelidate/lib/validators";
-const MODAL_WIDTH = 800
+const MODAL_WIDTH = 800;
 
 export default {
-  name: 'DemoLoginModal',
+  name: "DemoLoginModal",
+  
   data() {
     return {
+      mensajeRegistro:"",
       mensaje: "",
       modalWidth: MODAL_WIDTH,
+      user: {
+        username: "",
+        password: "",
+        email: "",
+        name: "",
+        lastname: "",
+        dni: "",
+        edad: "",
+        discapacidad: "",
+        celular: "",
+        direccion: "",
+      },
       paciente: {
         correo: "",
-        contrasena: ""
+        contrasena: "",
       },
       pacienteDatos: {
         nombre: "",
@@ -177,65 +204,71 @@ export default {
         direccion: "",
         telefono: "",
         dni: "",
-        discapacidad: ""
+        discapacidad: "",
       },
       mensaje: null,
       carga: true,
-      carga2: null
-    }
+      carga2: null,
+    };
   },
   created() {
     this.modalWidth =
-      window.innerWidth < MODAL_WIDTH ? MODAL_WIDTH / 2 : MODAL_WIDTH
+      window.innerWidth < MODAL_WIDTH ? MODAL_WIDTH / 2 : MODAL_WIDTH;
   },
   validations: {
-    paciente: {
-      correo: {
+    user: {
+      username: { required },
+      password: {
         required,
-        email
+        minLength: minLength(4),
       },
-      contrasena: {
+      email: {
         required,
-        minLength: minLength(4)
-      }
-    },
-    pacienteDatos: {
-      nombre: { required },
-      apellido: { required },
-      edad: { required },
-      genero: {required},
-      direccion: { required },
-      telefono: { required },
+        email,
+      },
+      name: { required },
+      lastname: { required },
       dni: { required },
-      discapacidad: { required }
-    }
+      edad: { required },
+      discapacidad: { required },
+      celular: { required },
+      direccion: { required },
+    },
   },
   methods: {
-    registrarPaciente(paciente, pacienteDatos) {
-      this.carga2=true;
-      this.paciente = paciente;
-      this.pacienteDatos = pacienteDatos;
+    registrarPaciente(user) {
+      this.user = user;
+      const config = {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      };
+      this.carga2 = true;
+      
       this.axios
-        .post("https://proyectocalidad9.herokuapp.com/paciente/registro", {
-        //.post("http://localhost:1400/paciente/registro", {
-          ...this.paciente,
-          ...this.pacienteDatos
-         
-        })
+        .post("https://sicramv1.herokuapp.com/api/signupuser", {
+          ...this.user
+        }) //elemento spreat
+        //agrega al obejto json al contenido que agregamos, seria como un solo json de todos los parámetros
 
-        .then(res => {
-          this.carga = true;
-          this.$modal.hide('demo-login')
-          this.carga2=false;
-          
+        .then((res) => {
+          if(res.data.msg==="Username ya existe."){
+            this.mensaje = "Este usuario se encuentra registrado"
+            this.carga = false;
+            this.carga2 = false;
+          }else{
+            this.carga = true;
+            this.$modal.hide("demo-login");
+            this.carga2 = false;
+          }
         })
-        .catch(e => {
-          this.mensaje = e.response.data.message;
+        .catch((e) => {
+          this.mensaje = "Este usuario se encuentra registrado"
           this.carga = false;
-          this.carga2=false;
+          this.carga2 = false;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -253,8 +286,6 @@ $facebook_color: #3880ff;
   box-shadow: 0 0 40px black;
   color: #025f8ace;
   font-size: 0;
-
-  
 
   .box-messages {
     position: absolute;
@@ -277,32 +308,40 @@ $facebook_color: #3880ff;
     color: white;
     background: #f38181;
   }
+
+  .but {
+  background: #60b9cf;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.but:hover {
+  background: #0099a1;
+  color: white;
+}
   .label {
     width: 100%;
     height: 100%;
     font-size: 13px;
-    color:  #494949;
+    color: #494949;
     font-weight: bold;
   }
-.butn {
+  .butn {
     background-color: transparent;
     text-transform: uppercase;
-    border: 1px solid #025f8ace ;
+    border: 1px solid #025f8ace;
     padding: 10px 20px;
     margin: 5px 0px;
-    color: #025f8ace ;
+    color: #025f8ace;
     font-size: 14px;
     letter-spacing: 1px;
     opacity: 0.7;
     font-weight: bold;
-}
-.butn:hover {
+  }
+  .butn:hover {
     opacity: 1;
-    background-color: #03a8f4d5 ;
-    color: white; 
-}
-  
-
+    background-color: #03a8f4d5;
+    color: white;
+  }
 
   button {
     background: white;
@@ -310,7 +349,7 @@ $facebook_color: #3880ff;
     box-sizing: border-box;
     padding: 10px;
     letter-spacing: 1px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     min-width: 140px;
     margin-top: 8px;
@@ -387,4 +426,7 @@ $facebook_color: #3880ff;
   opacity: 0;
   transform: translateY(24px);
 }
+
+
+
 </style>

@@ -1,35 +1,22 @@
-
 <template>
-  <div class="home">
-    <Navbar></Navbar>
-    <Slider></Slider>
-    <Cuerpo></Cuerpo>
-    <Footer></Footer>
-    
+  <div>
+    <Cabecera/>
+    <Cuerpo/>
+    <Footer/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import Navbar from '@/components/Navbar.vue'
-import Slider from '@/components/Slider.vue'
 import Footer from '@/components/Footer.vue'
 import Cuerpo from '@/components/Cuerpo.vue'
+import Cabecera from '@/components/Cabecera.vue'
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld,
-    Navbar,
-    Slider,
+    name: 'Home',
+    components: {
+    Cabecera,
     Footer,
     Cuerpo
   },
-   /*created() {
-              EventBus.$on('refresh-stores-list', () => {
-                  this.$forceUpdate();
-              });
-          },*/
 }
 </script>
 <style lang="scss" scoped>

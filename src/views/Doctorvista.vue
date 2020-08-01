@@ -1,46 +1,41 @@
 <template>
   <div>
-    
     <MenuDoctor></MenuDoctor>
-    
-      <component v-bind:is="this.componenteVista">
-      </component>
-    
+
+    <component v-bind:is="this.componenteVistaDoctor"> </component>
   </div>
 </template>
 
 <style type="scss">
-@import '../css/pacientevista.css';
-
+@import "../css/pacientevista.css";
 </style>
 <script>
-import MenuDoctor from '@/components/MenuDoctor.vue'
-import InicioPaciente from '@/components/InicioPaciente.vue'
-import PerfilPaciente from '@/components/PerfilPaciente.vue'
-import ActualizarPaciente from '@/components/ActualizarPaciente.vue'
-import ActualizarCitaPaciente from '@/components/ActualizarCitaPaciente.vue'
-import NuevaCitaPaciente from '@/components/NuevaCitaPaciente.vue'
-import { mapActions, mapState } from 'vuex'
+import MenuDoctor from "@/components/MenuDoctor.vue";
+import InicioDoctor from "@/components/InicioDoctor.vue";
+import PerfilDoctor from "@/components/PerfilDoctor.vue";
+import ActualizarDoctor from "@/components/ActualizarDoctor.vue";
+import ModificarHorarioDoc from "@/components/ModificarHorarioDoc.vue";
+import AgregarHorarioDoc from "@/components/AgregarHorarioDoc.vue";
+import CitaPendienteDoctor from "@/components/CitaPendienteDoctor.vue";
+
+import { mapActions, mapState } from "vuex";
 
 export default {
-    
-    name: 'Doctorvista',
-    components: {
-      MenuDoctor,
-      InicioPaciente,
-      PerfilPaciente,
-      ActualizarPaciente,
-      ActualizarCitaPaciente,
-      NuevaCitaPaciente
-    },
-    
-    computed:{
-      ...mapState(['componenteVista'])
-    },
-    
-}
+  name: "Doctorvista",
+  components: {
+    MenuDoctor,
+    InicioDoctor,
+    PerfilDoctor,
+    ActualizarDoctor,
+    ModificarHorarioDoc,
+    AgregarHorarioDoc,
+    CitaPendienteDoctor
+  },
+
+  computed: {
+    ...mapState(["componenteVistaDoctor"]),
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

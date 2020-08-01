@@ -8,13 +8,13 @@
       <div class="container">
          <div class="row">
             <div class="col-xl-4">
-               <p class="white"><strong>Mapa del sitio</strong><br>Plataforma de Taller</p>
+               <p class="white"><strong>Mapa del sitio</strong><br>Plataforma de Calidad</p>
                
             </div>
             <div class="col-xl-4">
                <p class="white"><strong>Contactos</strong></p>
                <ul class="white">
-                  <li class="small">Taller</li>
+                  <li class="small">Calidad</li>
                   <li class="small">SICRAM.com.</li>
                </ul>
             </div>

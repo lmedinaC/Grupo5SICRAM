@@ -25,39 +25,39 @@
 </template>
 <script>
 export default {
-  name: 'DemoErrorModal',
+  name: "DemoErrorModal",
   data() {
     return {
       bugCount: 0,
-      message: '',
-      hasBugs: false
-    }
+      message: "",
+      hasBugs: false,
+    };
   },
   methods: {
     createBug() {
-      this.bugCount++
+      this.bugCount++;
     },
 
     fixBug() {
-      this.bugCount = Math.max(this.bugCount - 1, 0)
-      this.hasBugs = false
+      this.bugCount = Math.max(this.bugCount - 1, 0);
+      this.hasBugs = false;
     },
 
     beforeOpen() {
-      this.bugCount = Math.round(Math.random() * 3) + 1
+      this.bugCount = Math.round(Math.random() * 3) + 1;
     },
 
     beforeClose(event) {
       if (this.bugCount > 0) {
-        this.hasBugs = true
+        this.hasBugs = true;
         /*
         Stopping close event execution
         */
-        event.cancel()
+        event.cancel();
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss">
 .error-modal {
@@ -79,7 +79,7 @@ export default {
     letter-spacing: 2px;
     padding: 40px;
   }
-    
+
   button {
     width: 180px;
   }
